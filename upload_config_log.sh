@@ -23,20 +23,27 @@ upload_on_usb=1
 #=================Конфигурация=================#
 ################################################
 
-### Определение имени пользователя
+### Name user
 host=`whoami`
 
-### Поиск файла с названием klipper.cfg
-klp_conf=($(find /home/$host/ $(pwd) -name klipper.cfg))
-#klp_conf=/home/$host/Documents/upload-drive/klipper.cfg
+### Find file printer.cfg
+print_conf="/home/$host/klipper_config/printer.cfg"
+#print_conf=($(find /home/$host $(pwd) -name printer.cfg))
 
-### Поиск файла с названием moonraker.conf
-mnr_conf=($(find /home/$host/ $(pwd) -name moonraker.conf))
-#mnr_conf=/home/$host/Documents/upload-drive/moonraker.conf
+### Find file moonraker.conf	
+mnr_conf="/home/$host/klipper_config/moonraker.conf"
+#mnr_conf=($(find /home/$host $(pwd) -name moonraker.conf))
 
-### Поиск файла с названием KlipperScreen.conf
-KS_conf=($(find /home/$host/ $(pwd) -name KlipperScreen.conf))
-#KS_conf=/home/$host/Documents/upload-drive/KlipperScreen.conf
+### Find file KlipperScreen.conf
+KS_conf="/home/$host/klipper_config/KlipperScreen.conf"
+#KS_conf=($(find /home/$host $(pwd) -name KlipperScreen.conf))
+
+### Find file fluidd.cfg
+fluidd_conf="/home/$host/klipper_config/fluidd.cfg"
+#print_conf=($(find /home/$host $(pwd) -name fluidd.cfg))
+
+### Find file webcam.txt
+fluidd_conf="/home/$host/klipper_config/webcam.txt"
 
 ### USB-устройства
 ### Путь к usb-устройство
