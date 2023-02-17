@@ -24,23 +24,23 @@ host=`whoami`
 prt_conf=/home/$host/klipper_config/printer.cfg
 
 ### Путь к usb-устройство
-usb_path=($(mount | grep "dev/${DEVBASE}" | awk '{ print $3 }' | grep "/home/$host"))
+usb_path=$(mount | grep "dev/${DEVBASE}" | awk '{ print $3 }' | grep "/home/$host")
 
 ### Получение серийного номера принтера (Формат: ZBxxxxxxx)
-ID=($(cat $prt_conf | grep "Z" | cut -b 8-))
+ID=$(cat $prt_conf | grep "Z" | cut -b 8-)
 
 ### Переменная получения текущих даты и времени из системы
-now_date_time=($(date +"%d.%m.%Y-%I.%M.%S"))
+now_date_time=$(date +"%d.%m.%Y-%I.%M.%S")
 
 ### Функция копирования конфигурационных файлов в директорию
 copy_to() {
-	cp $prt_conf ./$ID/printer_$ID-$now_date_time.cfg
+	sudo cp $prt_conf ./conf_$ID/printer_$ID-$now_date_time.cfg
 }
 
 ### Функция создания директории и копирования в нее конфигурационных файлов
 copy_to_dir() {
-	mkdir $ID
-	cp $prt_conf ./$ID/printer_$ID-$now_date_time.cfg
+	mkdir ./conf_$ID
+	sudo cp $prt_conf ./conf_$ID/printer_$ID-$now_date_time.cfg
 	}
 
 ### Копирование файлов в директорию
