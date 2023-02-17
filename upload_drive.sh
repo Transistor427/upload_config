@@ -17,7 +17,7 @@ prt_conf=/home/$host/klipper_config/printer.cfg
 
 usb_path=$(mount | grep "dev/${DEVBASE}" | awk '{ print $3 }' | grep "/home/$host")
 
-ID=$(cat $prt_conf | grep "Z" | cut -b 8-)
+ID=$(cat $prt_conf | grep "ZB" | cut -b 8-)
 
 now_date_time=$(date +"%d.%m.%Y-%I.%M.%S")
 
