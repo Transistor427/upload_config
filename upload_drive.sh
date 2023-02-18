@@ -11,14 +11,21 @@ ID=`cat $prt_conf | grep "ZB" | cut -b 8-16`
 
 now_date_time=`date +"%d.%m.%Y-%I.%M.%S"`
 
+### Server configuration
+srv_usr="test"
+srv_ip="178.172.161.8"
+srv_ssh=`ssh $srv_usr@$srv_ip`
+srv_connect=`ping -q -c1 $srv_ip &>/dev/null && echo online || echo offline`
+
+
 copy_to() {
 	sudo cp $prt_conf ./conf_$ID/printer_$ID-$now_date_time.cfg
 }
-
 copy_to_dir() {
 	mkdir ./conf_$ID
 	sudo cp $prt_conf ./conf_$ID/printer_$ID-$now_date_time.cfg
 	}
+
 
 if [ -d conf_$ID ];
 	then
@@ -29,16 +36,11 @@ fi
 
 if [ $upload_on_server == 1 ];
 	then
-			if [ -d $usb_path ];
-				then
-					if [ -d $usb_path/$ID ];
-						then
-							cp $prt_conf $usb_path/$ID/printer_$ID-$now_date_time.cfg
-						else
-							mkdir $usb_path/$ID
-							cp $prt_conf $usb_path/$ID/printer_$ID-$now_date_time.cfg
-					fi
-			fi
+		if [ $srv_connect == online ];
+			then
+			echo "online"
+		fi
+
 fi
 
 if [ $upload_on_usb == 1 ];
