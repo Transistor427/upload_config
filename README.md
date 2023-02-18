@@ -10,4 +10,5 @@ cd ~
 git clone https://github.com/Transistor427/upload_config
 cd upload_config
 sudo chmod 777 upload_data.sh
+bash upload_data.sh
 ```
