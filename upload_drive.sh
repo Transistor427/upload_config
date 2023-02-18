@@ -1,15 +1,8 @@
 #!bin/sh
-### -- Comments
-# -- Off comand
-
-################################################
-#===================Modules====================#
-################################################
 
 log_work=1
 upload_on_server=1
 upload_on_usb=0
-
 
 host=`whoami`
 
@@ -37,7 +30,6 @@ if [ -d $ID ];
 		copy_to_dir
 fi
 
-
 if [ $upload_on_server == 1 ];
 	then
 			if [ -d $usb_path ];
@@ -51,8 +43,6 @@ if [ $upload_on_server == 1 ];
 					fi
 			fi
 fi
-
-
 
 if [ $upload_on_usb == 1 ];
 	then
