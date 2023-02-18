@@ -1,18 +1,15 @@
 #!bin/sh
 
-log_work=1
 upload_on_server=1
 upload_on_usb=0
 
-host=`whoami`
+prt_conf=/home/rock/klipper_config/printer.cfg
 
-prt_conf=/home/$host/klipper_config/printer.cfg
+usb_path=`mount | grep "dev/${DEVBASE}" | awk '{ print $3 }' | grep "/home/$host"`
 
-usb_path=$(mount | grep "dev/${DEVBASE}" | awk '{ print $3 }' | grep "/home/$host")
+ID=`cat $prt_conf | grep "ZB" | cut -b 8-`
 
-ID=$(cat $prt_conf | grep "ZB" | cut -b 8-)
-
-now_date_time=$(date +"%d.%m.%Y-%I.%M.%S")
+now_date_time=`date +"%d.%m.%Y-%I.%M.%S"`
 
 copy_to() {
 	sudo cp $prt_conf ./conf_$ID/printer_$ID-$now_date_time.cfg
