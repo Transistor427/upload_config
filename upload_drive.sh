@@ -1,13 +1,13 @@
 #!bin/sh
 
-upload_on_server=1
+upload_on_server=0
 upload_on_usb=0
 
 prt_conf=/home/rock/klipper_config/printer.cfg
 
 usb_path=`mount | grep "dev/${DEVBASE}" | awk '{ print $3 }' | grep "/home/$host"`
 
-ID=`cat $prt_conf | grep "ZB" | cut -b 8-`
+ID=`cat $prt_conf | grep "ZB" | cut -b 8-16`
 
 now_date_time=`date +"%d.%m.%Y-%I.%M.%S"`
 
@@ -20,7 +20,7 @@ copy_to_dir() {
 	sudo cp $prt_conf ./conf_$ID/printer_$ID-$now_date_time.cfg
 	}
 
-if [ -d $ID ];
+if [ -d conf_$ID ];
 	then
 		copy_to
 	else
