@@ -4,6 +4,7 @@
 The task of this script is to upload configuration files and logs to the cloud.
 
 <h2>How to work</h2>
+
 ```
 cd ~
 git clone https://github.com/Transistor427/upload_config
