@@ -25,7 +25,7 @@ copy_to_dir() {
 	}
 
 clear_log() {
-	cat ./conf_$ID/klippy* | grep -B50 -A5 -a -e"mcu" -e"MCU" -e"Errno" >> /home/rock/upload_config/conf_$ID/output_klippy_$now_date_time.log
+	cat /home/rock/upload_config/conf_$ID/conf_$ID/klippy* | grep -B50 -A5 -a -e"mcu" -e"MCU" -e"Errno" >> /home/rock/upload_config/conf_$ID/output_klippy_$now_date_time.log
 }
 
 if [ -d conf_$ID ];
