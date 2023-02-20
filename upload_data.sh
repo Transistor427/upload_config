@@ -9,9 +9,7 @@ prt_conf=/home/rock/klipper_config/printer.cfg
 klp_log=/home/rock/klipper_logs/klippy.log
 
 usb_path=`mount | grep "dev/${DEVBASE}" | awk '{ print $3 }' | grep "/home/$host"`
-
 ID=`cat $prt_conf | grep "ZB" | cut -b 8-16`
-
 now_date_time=`date +"%d.%m.%Y-%I.%M"`
 
 copy_to() {
@@ -22,8 +20,7 @@ copy_to_dir() {
 	mkdir ./conf_$ID
 	sudo cp $prt_conf ./conf_$ID/printer_$ID-$now_date_time.cfg
 	sudo cp $klp_log ./conf_$ID/klippy_$ID-$now_date_time.log
-	}
-
+}
 clear_log() {
 	cat /home/rock/upload_config/conf_$ID/klippy* | grep -B50 -A5 -a -e"mcu" -e"MCU" -e"Errno" >> /home/rock/upload_config/conf_$ID/output_klippy_$now_date_time.log
 }
