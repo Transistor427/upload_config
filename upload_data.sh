@@ -25,7 +25,7 @@ copy_to_dir() {
 	}
 
 clear_log() {
-	cat ./conf_$ID/klippy* | grep -B50 -A5 -a -e"mcu" -e"MCU" -e"Errno" >> output_klippy_$now_date_time.log
+	cat ./conf_$ID/klippy* | grep -B50 -A5 -a -e"mcu" -e"MCU" -e"Errno" >> /home/rock/upload_config/conf_$ID/output_klippy_$now_date_time.log
 }
 
 if [ -d conf_$ID ];
@@ -48,10 +48,9 @@ if [ $upload_on_server == 1 ];
 				echo "Copy configs and logs to server."
 				scp -r ./conf_$ID/ test@178.172.161.8:/home/test/data_printer/
 				echo "Remove config and logs."
-				#sudo rm ./conf_$ID/printer*
-				#sudo rm ./conf_$ID/klippy*
+				sudo rm ./conf_$ID/*
 			else
-				echo “Server not avaible.”
+				echo “Server not avaible. Check your internet connection.”
 		fi
 	fi
 
