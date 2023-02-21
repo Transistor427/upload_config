@@ -43,7 +43,7 @@ if [ $upload_on_server == 1 ];
 			then
 				echo "Server avaible."
 				echo "Copy configs and logs to server."
-				scp -r ./printer_$ID/ test@178.172.161.8:/home/test/data_printer/
+				scp -r ./printer_$ID/ zbtest@178.172.161.8:/home/zbtest/
 				echo "Remove config and logs."
 				sudo rm ./printer_$ID/*
 			else
