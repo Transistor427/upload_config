@@ -41,13 +41,13 @@ if [ $upload_on_server == 1 ];
 		ping -c1 -i3 178.172.161.8
 		if [ $? -eq 0 ];
 			then
-				echo "Server avaible."
+				echo "Server avaible." >> /tmp/KlipperScreen.log
 				echo "Copy configs and logs to server."
 				scp -r ./printer_$ID/ zbtest@178.172.161.8:/home/zbtest/
 				echo "Remove config and logs."
 				sudo rm ./printer_$ID/*
 			else
-				echo “Server not avaible. Check your internet connection.”
+				echo "Server not avaible. Check your internet connection." >> /tmp/KlipperScreen.log
 		fi
 	fi
 
