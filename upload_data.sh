@@ -13,16 +13,16 @@ ID=`cat $prt_conf | grep "ZB" | cut -b 8-16`
 now_date_time=`date +"%d.%m.%Y-%I.%M"`
 
 copy_to() {
-	sudo cp $prt_conf ./conf_$ID/printer_$ID-$now_date_time.cfg
-	sudo cp $klp_log ./conf_$ID/klippy_$ID-$now_date_time.log
+	sudo cp $prt_conf ./printer_$ID/printer_$ID-$now_date_time.cfg
+	sudo cp $klp_log ./printer_$ID/klippy_$ID-$now_date_time.log
 }
 copy_to_dir() {
-	mkdir ./conf_$ID
-	sudo cp $prt_conf ./conf_$ID/printer_$ID-$now_date_time.cfg
-	sudo cp $klp_log ./conf_$ID/klippy_$ID-$now_date_time.log
+	mkdir ./printer_$ID
+	sudo cp $prt_conf ./printer_$ID/printer_$ID-$now_date_time.cfg
+	sudo cp $klp_log ./printer_$ID/klippy_$ID-$now_date_time.log
 }
 clear_log() {
-	cat /home/rock/upload_config/conf_$ID/klippy* | grep -B50 -A5 -a -e"mcu" -e"MCU" -e"Errno" >> /home/rock/upload_config/conf_$ID/output_klippy_$now_date_time.log
+	cat /home/rock/upload_config/printer_$ID/klippy* | grep -B50 -A5 -a -e"mcu" -e"MCU" -e"Errno" >> /home/rock/upload_config/printer_$ID/output_klippy_$now_date_time.log
 }
 
 if [ -d conf_$ID ];
@@ -43,9 +43,9 @@ if [ $upload_on_server == 1 ];
 			then
 				echo "Server avaible."
 				echo "Copy configs and logs to server."
-				scp -r ./conf_$ID/ test@178.172.161.8:/home/test/data_printer/
+				scp -r ./printer_$ID/ test@178.172.161.8:/home/test/data_printer/
 				echo "Remove config and logs."
-				sudo rm ./conf_$ID/*
+				sudo rm ./printer_$ID/*
 			else
 				echo “Server not avaible. Check your internet connection.”
 		fi
